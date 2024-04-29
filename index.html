@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio</title>
+    <style>
+        body { /* Altera em todo site a cor de fundo e o estilo da letra */
+            font-family: 'Arial', sans-serif; 
+            background-color: #f8f9fa; 
+            margin: 0;
+            padding: 0;
+        }
+
+        header { /* Cria um banner acizentado com as letras na cor branca */
+            background-color: #343a40; 
+            color: #ffffff; 
+            text-align: center; 
+            padding: 20px 0;
+        }
+
+        nav { /* Altera a cor da letra para branco */
+            background-color: #007bff; 
+            color: #ffffff; 
+            padding: 10px;
+        }
+
+        nav ul { /* Alinha os itens do menu */
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav a { /* Altera o estilo e a cor das letras do menu*/
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        section { /* Altera a section para não serem exibidas */
+            display: none;
+            padding: 20px;
+        }
+ 
+        button{ /* Altera o estilo do botão arrendondando e adicionando um fundo azul */
+            display: block;
+            padding: 10px 20px;
+            background-color: #007bff; 
+            color: white; 
+            border: none;
+            border-radius: 20px; 
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        label{ /* Alinha os itens adicionando quebra de linha */
+            display:inline-block;
+        }
+    </style>
+
+    <script>
+        // Função para mostrar a seção correspondente ao link clicado
+        function mostrarSecao(id) {
+            // Oculta todas as seções
+            var secoes = document.querySelectorAll('section');
+            secoes.forEach(function(secao) {
+                secao.style.display = 'none';
+            });
+
+            // Mostra apenas a seção correspondente ao ID passado como parâmetro
+            var secaoSelecionada = document.getElementById(id);
+            secaoSelecionada.style.display = 'block';
+        }
+
+        // Adiciona um evento de clique a todos os links do menu de navegação
+        window.onload = function() {
+            const defaultSection = document.getElementById('sobreMim');
+            defaultSection.style.display = 'block'; // Exibe a seção "Sobre Mim" por padrão
+
+            var links = document.querySelectorAll('nav a');
+            links.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    // Previne o comportamento padrão do link (navegação para outra página)
+                    event.preventDefault();
+                    // Obtém o ID da seção correspondente ao link clicado
+                    var idSecao = link.getAttribute('href').substring(1);
+                    // Mostra a seção correspondente
+                    mostrarSecao(idSecao);
+                });
+            });
+        };
+
+        function enviarMensagem() {
+        // Obtém os valores dos campos
+        var nome = document.getElementById("nomeInput").value;
+        var email = document.getElementById("emailInput").value;
+        var mensagem = document.getElementById("mensagemInput").value;
+
+        // Verifica se algum campo está vazio
+        if (nome === '' || email === '' || mensagem === '') {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        // Simula o envio da mensagem (neste caso, apenas exibe um alerta)
+        alert('Mensagem enviada!');
+
+        // Limpa os campos do formulário
+        document.getElementById("nomeInput").value = '';
+        document.getElementById("emailInput").value = '';
+        document.getElementById("mensagemInput").value = '';
+        }
+    </script>
+</head>
+<body>
+    <!-- Banner do site -->
+    <header> 
+        <h1>Portfólio</h1>
+        <p>Portfólio Julio Cesar</p>
+    </header>
+
+    <!-- Menu -->
+    <nav>
+        <ul>
+            <li><a href="#sobreMim">Sobre Mim</a></li>
+            <li><a href="#formacao">Formação</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteudo principal do site -->
+    <main>
+        <!-- Sobre mim contendo informações pessoais -->
+        <section id="sobreMim">
+            <h1>Sobre Mim</h1>
+            <p>Estou cursando Análise e Desenvolvimento de Sistemas pela UNINTER. tenho afinidade com trabalhos em equipe, sempre buscando oportunidades para me aprimorar e buscar o melhor.
+                 Estou atualmente focando meus estudos em JAVA utilizando SPRING BOOT e REACT para desenvolvimento WEB.
+            </p>
+        </section>
+
+        <!-- Formação contendo cursos e certificações realizados -->
+        <section id="formacao">
+            <h1>Formação</h1>
+            <ol>
+                <li>Análise e Desenvolvimento de Sistemas - UNINTER Centro Universitário Internacional (EM FORMAÇÃO)</li>
+            </ol>
+            <h1>Cursos</h1>
+            <ol>
+                <li>Python Essentials 1 - CISCO</li>
+                <li>MICROSOFT EXCEL 2016 AVANÇADO - Fundação Bradesco</li>
+                <li>PROGRAMADOR WEB - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul - Campus Sertão</li>
+                <li>Oracle Cloud Infrastructure 2023 Certified Foundations Associate - ORACLE</li>
+            </ol>
+        </section>
+
+        <!-- Portfolio contendo projeto pessoais realizados -->
+        <section id="portfolio">
+            <h1>Portfólio</h1>
+            <p>repositórios contendo projetos pessoais</p>
+            <ol>
+                <li><a href="https://github.com/Julio-Lopes/Stock_System_Spring_Boot">Sistema de estoque</a></li>
+                <li><a href="https://github.com/Julio-Lopes/Rpg-Maker">Site de criação de ficha de RPG</a></li>
+                <li><a href="https://github.com/Julio-Lopes/workshopExercise-Java-SpringBoot">Site de vendas</a></li>
+            </ol>
+        </section>
+
+        <!-- Contato contendo uma simulação de envio de mensagem -->
+        <section id="contato">
+            <h1>Contato</h1>
+            <form id="myForm">
+                <label>
+                    <p>Nome:</p>
+                    <input id="nomeInput">
+                </label>
+                <br><br>
+                <label>
+                    <p>Email:</p>
+                    <input id="emailInput" type="email">
+                </label>
+                <br><br>
+                <label>
+                    <p>Mensagem:</p>
+                    <textarea id="mensagemInput" rows="8" cols="50"></textarea>
+                </label>
+                <button type="button" onclick="enviarMensagem()">Enviar</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
